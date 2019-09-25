@@ -4,7 +4,7 @@ from forms import RegistrationForm, LoginForm
 app = Flask(__name__)
 
 #secrets.token_hex(16)
-app.config('SECRET_KEY'='89411675b09c95600928be84bf9cc0ec')
+app.config['SECRET_KEY']='89411675b09c95600928be84bf9cc0ec'
 
 posts = [
 
@@ -32,13 +32,13 @@ def home():
 def about():
     return render_template('about.html', title='About')
 
-@app.route("/register")
+@app.route("/register", methods=['GET','POST'])
 def register():
     form = RegistrationForm()
     return render_template('register.html', title='Register', form=form)
 
 @app.route("/login")
-def register():
+def login():
     form = LoginForm()
     return render_template('login.html', title='Login', form=form)
     
